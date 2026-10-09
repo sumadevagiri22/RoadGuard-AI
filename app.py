@@ -471,36 +471,34 @@ uploaded_file = st.file_uploader(
         type=["jpg", "jpeg", "png", "webp"]
     )
 
-    if uploaded_file:
+if uploaded_file:
 
-        image = Image.open(uploaded_file)
-        image = ImageOps.exif_transpose(image)
+    image = Image.open(uploaded_file)
+    image = ImageOps.exif_transpose(image)
+    st.markdown("### 🖼️ Selected Image")
+    st.image(
+        image,
+        caption=uploaded_file.name,
+        use_container_width=True
+    )
 
-        st.markdown("### 🖼️ Selected Image")
+    st.markdown("<br>", unsafe_allow_html=True)
 
-        st.image(
-            image,
-            caption=uploaded_file.name,
-            use_container_width=True
-        )
-
-        st.markdown("<br>", unsafe_allow_html=True)
-
-        detect_button = st.button(
+detect_button = st.button(
             "🚀 Detect Potholes",
             use_container_width=True,
             type="primary"
         )
 
-        if detect_button:
+    if detect_button:
 
-            if not api_key:
+        if not api_key:
 
                 st.error(
                     "Please enter your Roboflow Private API Key first."
                 )
 
-            else:
+        else:
 
                 with st.spinner("🤖 AI is analyzing the road image..."):
 
