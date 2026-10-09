@@ -466,7 +466,7 @@ except Exception:
     
 st.markdown("---")
 
-    uploaded_file = st.file_uploader(
+uploaded_file = st.file_uploader(
         "📷 Upload a road image",
         type=["jpg", "jpeg", "png", "webp"]
     )
