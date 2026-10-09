@@ -456,20 +456,15 @@ elif page == "🔍 Detect":
     )
 
     # API KEY
+st.markdown("### 🔒 AI Connection")
 
-    st.markdown("### 🔐 AI Connection")
-
-    api_key = st.text_input(
-        "Roboflow Private API Key",
-        type="password",
-        placeholder="Enter your private API key"
-    )
-
-    st.caption(
-        "Your API key is used only for this session and is not written into the application code."
-    )
-
-    st.markdown("---")
+try:
+    api_key = st.secrets["ROBOFLOW_API_KEY"]
+except Exception:
+    api_key = ""
+    st.error("Roboflow API key is not configured. Add it in Streamlit Secrets.")
+    
+st.markdown("---")
 
     uploaded_file = st.file_uploader(
         "📷 Upload a road image",
