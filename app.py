@@ -485,20 +485,20 @@ if uploaded_file:
     st.markdown("<br>", unsafe_allow_html=True)
 
 detect_button = st.button(
-            "🚀 Detect Potholes",
-            use_container_width=True,
-            type="primary"
+        "🚀 Detect Potholes",
+        use_container_width=True,
+        type="primary"
+)
+
+if detect_button:
+
+    if not api_key:
+
+        st.error(
+            "Please enter your Roboflow Private API Key first."
         )
 
-    if detect_button:
-
-        if not api_key:
-
-                st.error(
-                    "Please enter your Roboflow Private API Key first."
-                )
-
-        else:
+    else:
 
                 with st.spinner("🤖 AI is analyzing the road image..."):
 
